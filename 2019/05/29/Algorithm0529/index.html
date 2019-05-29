@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线段树,动态规划,区间dp,单调队列,重要,省选,数位dp,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="P3558 [POI2013]BAJ-BytecomputerR：f[i][0]表示第i个数以-1结尾的最小修正次数，f[i][1],f[i][2]类似,然后分类讨论a[i]的情况 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include const">
+<meta name="keywords" content="线段树,动态规划,区间dp,单调队列,重要,省选,数位dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Konjak Record——2019.05.29">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/Algorithm0529/index.html">
+<meta property="og:site_name" content="Oduesp">
+<meta property="og:description" content="P3558 [POI2013]BAJ-BytecomputerR：f[i][0]表示第i个数以-1结尾的最小修正次数，f[i][1],f[i][2]类似,然后分类讨论a[i]的情况 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include const">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-29T14:30:05.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Konjak Record——2019.05.29">
+<meta name="twitter:description" content="P3558 [POI2013]BAJ-BytecomputerR：f[i][0]表示第i个数以-1结尾的最小修正次数，f[i][1],f[i][2]类似,然后分类讨论a[i]的情况 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include const">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/Algorithm0529/">
+
+
+
+
+
+  <title>Konjak Record——2019.05.29 | Oduesp</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/oduesp" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oduesp</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/Algorithm0529/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oduesp">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oduesp">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Konjak Record——2019.05.29</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T22:09:24+08:00">
+                2019-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Konjak-Records/" itemprop="url" rel="index">
+                    <span itemprop="name">Konjak Records</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/29/Algorithm0529/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/29/Algorithm0529/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="P3558-POI2013-BAJ-Bytecomputer"><a href="#P3558-POI2013-BAJ-Bytecomputer" class="headerlink" title="P3558 [POI2013]BAJ-Bytecomputer"></a><a href="https://www.luogu.org/problemnew/show/P3558" target="_blank" rel="noopener">P3558 [POI2013]BAJ-Bytecomputer</a></h3><p>R：f[i][0]表示第i个数以-1结尾的最小修正次数，f[i][1],f[i][2]类似,然后分类讨论a[i]的情况</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000000</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> f[maxn][<span class="number">3</span>], arr[maxn], N;</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> f = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!isdigit(c)) {</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">'-'</span>)</span><br><span class="line">            f = -<span class="number">1</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span> (isdigit(c)) {</span><br><span class="line">        r = <span class="number">10</span> * r + c - <span class="string">'0'</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> f * r;</span><br><span class="line">}</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a < b ? a : b; }</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    N = read();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        arr[i] = read();</span><br><span class="line">    }</span><br><span class="line">    memset(f, <span class="number">0x3f</span>, sizeof(f));</span><br><span class="line">    f[<span class="number">1</span>][arr[<span class="number">1</span>] + <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">if</span> (arr[i] == -<span class="number">1</span>) {</span><br><span class="line">            f[i][<span class="number">0</span>] = f[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">            <span class="comment">//f[i][1] = f[i - 1][2] + 1;不能转移，因为需要前一个是1，而当前是0，这违背了单调性</span></span><br><span class="line">            f[i][<span class="number">2</span>] = f[i - <span class="number">1</span>][<span class="number">2</span>] + <span class="number">2</span>;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (arr[i] == <span class="number">0</span>) {</span><br><span class="line">            f[i][<span class="number">0</span>] = f[i - <span class="number">1</span>][<span class="number">0</span>] + <span class="number">1</span>;</span><br><span class="line">            f[i][<span class="number">1</span>] = min(f[i - <span class="number">1</span>][<span class="number">1</span>], f[i - <span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">            f[i][<span class="number">2</span>] = f[i - <span class="number">1</span>][<span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            f[i][<span class="number">0</span>] = f[i - <span class="number">1</span>][<span class="number">0</span>] + <span class="number">2</span>;</span><br><span class="line">            f[i][<span class="number">1</span>] = f[i - <span class="number">1</span>][<span class="number">0</span>] + <span class="number">1</span>;</span><br><span class="line">            f[i][<span class="number">2</span>] = min(f[i - <span class="number">1</span>][<span class="number">0</span>], min(f[i - <span class="number">1</span>][<span class="number">1</span>], f[i - <span class="number">1</span>][<span class="number">2</span>]));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> ans = min(min(f[N][<span class="number">0</span>], f[N][<span class="number">1</span>]), f[N][<span class="number">2</span>]);</span><br><span class="line">    <span class="keyword">if</span> (ans == f[<span class="number">0</span>][<span class="number">0</span>]) {</span><br><span class="line">        printf(<span class="string">"BRAK\n"</span>);</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        printf(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P2300-合并神犇"><a href="#P2300-合并神犇" class="headerlink" title="P2300 合并神犇"></a><a href="https://www.luogu.org/problemnew/show/P2300" target="_blank" rel="noopener">P2300 合并神犇</a></h3><p>R:f[i] = min(f[j]+i-j-1)，根据转移方程很容易让人想到使用单调队列维护f[j]-j，但是需要有<br>sum[i]-sum[j] >= pre[j]使得f[j]-j不好维护，容易证明选择满足条件的最大j为最佳转移点，详见代码注释</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include <algorithm></algorithm></span><br><span class="line">#include <cstdio></cstdio></span><br><span class="line">#include <cstring></cstring></span><br><span class="line">#define int long long</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> p[maxn], N, Q[maxn], f[maxn], g[maxn], head = <span class="number">1</span>, tail = <span class="number">0</span>, sum[maxn];</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * f[i] = f[j] + i - 1 - j(j为满足sum[i]-sum[j]>=g[j]的最大j)</span></span><br><span class="line"><span class="comment"> * 证明：i+1，f[i+1]比f[i]最多+1，但是i-1-j时却是实实在在的多一个1</span></span><br><span class="line"><span class="comment"> * 令h[j] = sum[j] + g[j]，维护一个单调增加队列</span></span><br><span class="line"><span class="comment"> * 如果新来一个h[j]>=尾部，则直接添加，反之删除尾部，不用担心删除合理的解，因为如果它能删除</span></span><br><span class="line"><span class="comment"> * 说明它更合理，因为j更大而且h[j]更小，后续sum是单增的。</span></span><br><span class="line"><span class="comment"> * 注意需要删除头部过期数据，因为需要找一个满足条件且j更靠后的。</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="function">signed <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%lld"</span>, &N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)< span><br><span class="line">        scanf(<span class="string">"%lld"</span>, &p[i]), sum[i] = sum[i - <span class="number">1</span>] + p[i];</span><br><span class="line">    Q[++tail] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">while</span> (head + <span class="number">1</span> <= tail && sum[i]>= g[Q[head + <span class="number">1</span>]] + sum[Q[head + <span class="number">1</span>]]) {</=></span><br><span class="line">            head++;</span><br><span class="line">        }</span><br><span class="line">        f[i] = f[Q[head]] + i - Q[head] - <span class="number">1</span>;</span><br><span class="line">        g[i] = sum[i] - sum[Q[head]];</span><br><span class="line">        <span class="keyword">while</span> (head <= tail && sum[q[tail]] + g[q[tail]]>= sum[i] + g[i]) {</=></span><br><span class="line">            tail--;</span><br><span class="line">        }</span><br><span class="line">        Q[++tail] = i;</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%lld\n"</span>, f[N]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P4302-SCOI2003-字符串折叠"><a href="#P4302-SCOI2003-字符串折叠" class="headerlink" title="P4302 [SCOI2003]字符串折叠"></a><a href="https://www.luogu.org/problemnew/show/P4302" target="_blank" rel="noopener">P4302 [SCOI2003]字符串折叠</a></h3><p>R：区间dp</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include <algorithm></algorithm></span><br><span class="line">#include <cstdio></cstdio></span><br><span class="line">#include <cstring></cstring></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 注意循环节内包含循环节的情况</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">105</span>];</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">105</span>][<span class="number">105</span>], len, cycle[<span class="number">105</span>][<span class="number">105</span>];</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a < b ? a : b; }</span><br><span class="line"></span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> e, <span class="keyword">int</span> l)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> q = e - s + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (q % l)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = s; i + l <= e; i++) {< span><br><span class="line">        <span class="keyword">if</span> (str[i] != str[i + l])</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%s"</span>, &str[<span class="number">1</span>]);</span><br><span class="line">    len = strlen(&str[<span class="number">1</span>]);</span><br><span class="line">    memset(f, <span class="number">0x3f</span>, sizeof(f)), memset(cycle, <span class="number">0x3f</span>, sizeof(cycle));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= len; i++) {< span><br><span class="line">        f[i][i] = <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= len; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">1</span>; s <= len; s++) {< span><br><span class="line">            <span class="keyword">int</span> e = s + i;</span><br><span class="line">            <span class="keyword">if</span> (e > len) {</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            f[s][e] = e - s + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = s; k < e; k++) {</span><br><span class="line">                f[s][e] = min(f[s][e], f[s][k] + f[k + <span class="number">1</span>][e]);</span><br><span class="line">                <span class="comment">//每个循环节的长度为k-s+1,共有(e-s+1)/(k-s+1)个</span></span><br><span class="line">                <span class="keyword">if</span> (check(s, e, k - s + <span class="number">1</span>)) {</span><br><span class="line">                    f[s][e] = min(f[s][e], f[s][k] + <span class="number">2</span> + ((e - s + <span class="number">1</span>) / (k - s + <span class="number">1</span>) < <span class="number">10</span> ? <span class="number">1</span> : <span class="number">2</span>));</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, f[<span class="number">1</span>][len]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P4158-SCOI2009-粉刷匠"><a href="#P4158-SCOI2009-粉刷匠" class="headerlink" title="P4158 [SCOI2009]粉刷匠"></a><a href="https://www.luogu.org/problemnew/show/P4158" target="_blank" rel="noopener">P4158 [SCOI2009]粉刷匠</a></h3><p>R:区间dp</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这是我第一道1A的省选题，思路是先对每条木板做一次区间dp</span></span><br><span class="line"><span class="comment"> * 然后再对所有木板做一次多重背包</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">int</span> N, M, T, cost[<span class="number">55</span>][<span class="number">55</span>], chess[<span class="number">55</span>][<span class="number">55</span>], sum[<span class="number">55</span>][<span class="number">55</span>], dp[<span class="number">55</span>][<span class="number">55</span>], f[<span class="number">2505</span>];</span><br><span class="line"><span class="keyword">char</span> tmp[<span class="number">55</span>];</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a > b ? a : b; }</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a < b ? a : b; }</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%d %d %d"</span>, &N, &M, &T);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        scanf(<span class="string">"%s"</span>, &tmp[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            chess[i][j] = tmp[j] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="comment">//统计前缀中1的个数</span></span><br><span class="line">            <span class="keyword">if</span> (chess[i][j] == <span class="number">1</span>) {</span><br><span class="line">                sum[i][j] = sum[i][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                sum[i][j] = sum[i][j - <span class="number">1</span>];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        memset(cost, ~<span class="number">0x3f</span>, sizeof(cost));</span><br><span class="line">        <span class="comment">//cost表示前j个涂k次且第j个正确涂色的最大数量</span></span><br><span class="line">        cost[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k <= j; k++) {< span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m < j; m++) {</span><br><span class="line">                    <span class="keyword">if</span> (m < k - <span class="number">1</span>) {</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    }</span><br><span class="line">                    <span class="keyword">int</span> right = chess[i][j] ? sum[i][j] - sum[i][m]</span><br><span class="line">                                            : (j - m + sum[i][m] - sum[i][j]);</span><br><span class="line">                    cost[j][k] = max(cost[j][k], cost[m][k - <span class="number">1</span>] + right);</span><br><span class="line">                }</span><br><span class="line">                dp[i][k] = max(dp[i][k], cost[j][k]);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = T; j >= <span class="number">1</span>; j--) {</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = min(M, j); k >= <span class="number">0</span>; k--) {</span><br><span class="line">                f[j] = max(f[j - k] + dp[i][k], f[j]);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, f[T]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h2 id="难题"><a href="#难题" class="headerlink" title="难题"></a>难题</h2><h3 id="P2757-国家集训队-等差子序列"><a href="#P2757-国家集训队-等差子序列" class="headerlink" title="P2757 [国家集训队]等差子序列"></a><a href="https://www.luogu.org/problemnew/show/P2757" target="_blank" rel="noopener">P2757 [国家集训队]等差子序列</a></h3><p>R:很重要很好的题目，使用了线段树维护正反hash</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这道题可以用暴力解决，也可以用线段树</span></span><br><span class="line"><span class="comment"> * aj - ai = ak - aj</span></span><br><span class="line"><span class="comment"> * aj*2 = ai + ak(i<j<k)< span></j<k)<></span><br><span class="line"><span class="comment"> * 枚举aj,如果aj，如果visited[aj+x]=visited[aj-x]，即aj前后回文，说明不可能构成</span></span><br><span class="line"><span class="comment"> * 等差数列，所以问题转换成一个维护正反hash的过程，可以用线段树来维护。</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line">#define ll long long</span><br><span class="line">#define mod INT_MAX</span><br><span class="line">#define maxn 10010</span><br><span class="line">#define seed 233</span><br><span class="line">ll tree[maxn << <span class="number">2</span>][<span class="number">2</span>], base[maxn], N, arr[maxn], T;</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a < b ? a : b; }</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a > b ? a : b; }</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    base[<span class="number">1</span>] = seed;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j < maxn; j++) {</span><br><span class="line">        base[j] = (base[j - <span class="number">1</span>] * seed) % mod;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> cur)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span> (l == r) {</span><br><span class="line">        tree[cur][<span class="number">0</span>] = tree[cur][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) >> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (pos <= mid) {< span><br><span class="line">        update(pos, l, mid, cur << <span class="number">1</span>);</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        update(pos, mid + <span class="number">1</span>, r, cur << <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">    tree[cur][<span class="number">0</span>] = (tree[cur << <span class="number">1</span>][<span class="number">0</span>] * base[r - mid] + tree[cur << <span class="number">1</span> | <span class="number">1</span>][<span class="number">0</span>]) % mod;</span><br><span class="line">    tree[cur][<span class="number">1</span>] = (tree[cur << <span class="number">1</span> | <span class="number">1</span>][<span class="number">1</span>] * base[mid - l + <span class="number">1</span>] + tree[cur << <span class="number">1</span>][<span class="number">1</span>]) % mod;</span><br><span class="line">}</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> cur, <span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span> (l >= L && r <= r) {< span><br><span class="line">        <span class="keyword">return</span> tree[cur][d];</span><br><span class="line">    }</span><br><span class="line">    ll mid = (l + r) >> <span class="number">1</span>, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (mid < L) {</span><br><span class="line">        <span class="keyword">return</span> query(mid + <span class="number">1</span>, r, L, R, cur << <span class="number">1</span> | <span class="number">1</span>, d);</span><br><span class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (mid >= R) {</span><br><span class="line">        <span class="keyword">return</span> query(l, mid, L, R, cur << <span class="number">1</span>, d);</span><br><span class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (d == <span class="number">0</span>) {</span><br><span class="line">        ans = (query(l, mid, L, R, cur << <span class="number">1</span>, d) * base[min(R, r) - mid]) % mod;</span><br><span class="line">        ans = (ans + query(mid + <span class="number">1</span>, r, L, R, cur << <span class="number">1</span> | <span class="number">1</span>, d)) % mod;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        ans = (query(mid + <span class="number">1</span>, r, L, R, cur << <span class="number">1</span> | <span class="number">1</span>, d) * base[mid - max(l, L) + <span class="number">1</span>]) % mod;</span><br><span class="line">        ans = (ans + query(l, mid, L, R, cur << <span class="number">1</span>, d)) % mod;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    init();</span><br><span class="line">    scanf(<span class="string">"%lld"</span>, &T);</span><br><span class="line">    <span class="keyword">while</span> (T--) {</span><br><span class="line">        memset(tree, <span class="number">0</span>, sizeof(tree));</span><br><span class="line">        scanf(<span class="string">"%lld"</span>, &N);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">            scanf(<span class="string">"%lld"</span>, &arr[i]);</span><br><span class="line">        }</span><br><span class="line">        bool flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n && !flag; i++) {< span><br><span class="line">            <span class="keyword">int</span> len = min(N - arr[i], arr[i] - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (len != <span class="number">0</span>) {</span><br><span class="line">                ll f1 = query(<span class="number">1</span>, N, arr[i] - len, arr[i] - <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">                ll f2 = query(<span class="number">1</span>, N, arr[i] + <span class="number">1</span>, arr[i] + len, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (f1 != f2) {</span><br><span class="line">                    flag = <span class="keyword">true</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            update(arr[i], <span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        puts(flag ? <span class="string">"Y"</span> : <span class="string">"N"</span>);</span><br><span class="line">    }</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></span></pre></td></tr></tbody></table></figure>
+<h3 id="P3413-SAC-1-萌数"><a href="#P3413-SAC-1-萌数" class="headerlink" title="P3413 SAC#1 - 萌数"></a><a href="https://www.luogu.org/problemnew/show/P3413" target="_blank" rel="noopener">P3413 SAC#1 - 萌数</a></h3><p>R:数位dp,据说是入门题，但我是第一次做这类题</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include <algorithm></algorithm></span><br><span class="line">#include <cstdio></cstdio></span><br><span class="line">#include <cstring></cstring></span><br><span class="line">#define ll long long</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> ll maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">char</span> s1[maxn], s2[maxn];</span><br><span class="line">ll n[maxn], len, f[maxn][<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * f[i][j][k]表示pos位置，前一个数是j,前前个数字是k的方案数</span></span><br><span class="line"><span class="comment"> * 如果r=21913，枚举到119?时会记录一个状态f[4][9][1],此时?可以选0-9</span></span><br><span class="line"><span class="comment"> * 当枚举到219?时这个状态是不能使用的，?需要<=1,这就是limit变量的作用< span></=1,这就是limit变量的作用<></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> pre, <span class="keyword">int</span> gre, bool limit, bool zero)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span> (pos == <span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (!limit && !zero && pre != -<span class="number">1</span> && gre != -<span class="number">1</span> && f[pos][pre][gre] != -<span class="number">1</span>) {</span><br><span class="line">        <span class="keyword">return</span> f[pos][pre][gre];</span><br><span class="line">    }</span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    ll up = limit ? n[pos] : <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i <= up; i++) {< span><br><span class="line">        <span class="keyword">if</span> (i != pre && i != gre && !zero) {</span><br><span class="line">            ans = (ans + dfs(pos - <span class="number">1</span>, i, pre, limit && i == n[pos], zero && i == <span class="number">0</span>)) % mod;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (zero) {</span><br><span class="line">            ans = (ans + dfs(pos - <span class="number">1</span>, (i == <span class="number">0</span> && zero) ? -<span class="number">1</span> : i, -<span class="number">1</span>, limit && i == n[pos], zero && i == <span class="number">0</span>)) % mod;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (!limit && !zero && pre != -<span class="number">1</span> && gre != -<span class="number">1</span>) {</span><br><span class="line">        <span class="keyword">return</span> f[pos][pre][gre] = ans;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">}</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    memset(f, -<span class="number">1</span>, sizeof(f));</span><br><span class="line">    len = strlen(&s2[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= len; i++) {< span><br><span class="line">        n[len - i + <span class="number">1</span>] = s2[i] - <span class="string">'0'</span>;</span><br><span class="line">    }</span><br><span class="line">    ll ans2 = dfs(len, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    len = strlen(&s1[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= len; i++) {< span><br><span class="line">        n[len - i + <span class="number">1</span>] = s1[i] - <span class="string">'0'</span>;</span><br><span class="line">    }</span><br><span class="line">    ll ans1 = dfs(len, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    ans1--;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= len; i++) {< span><br><span class="line">        <span class="keyword">if</span> (n[i] == n[i - <span class="number">1</span>] || (n[i] == n[i - <span class="number">2</span>] && i - <span class="number">2</span> >= <span class="number">1</span>)) {</span><br><span class="line">            ans1++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> (ans2 - ans1 + mod) % mod;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%s %s"</span>, &s1[<span class="number">1</span>], &s2[<span class="number">1</span>]);</span><br><span class="line">    ll numr = <span class="number">0</span>, numl = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= strlen(&s2[<span class="number">1</=></span>]); i++) {</=></span><br><span class="line">        numr = ((numr * <span class="number">10</span>) % mod + s2[i] - <span class="string">'0'</span>) % mod;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= strlen(&s1[<span class="number">1</=></span>]); i++) {</=></span><br><span class="line">        numl = ((numl * <span class="number">10</span>) % mod + s1[i] - <span class="string">'0'</span>) % mod;</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%lld\n"</span>, ((numr - numl + <span class="number">1</span> - solve()) % mod + mod) % mod);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></span></pre></td></tr></tbody></table></figure>
+<h3 id="P2051-AHOI2009-中国象棋"><a href="#P2051-AHOI2009-中国象棋" class="headerlink" title="P2051 [AHOI2009]中国象棋"></a><a href="https://www.luogu.org/problemnew/show/P2051" target="_blank" rel="noopener">P2051 [AHOI2009]中国象棋</a></h3><p>R:思维题，转移方程很清奇</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line">#define mod 9999973</span><br><span class="line">#define maxn 105</span><br><span class="line">#define int long long</span><br><span class="line"><span class="keyword">int</span> f[maxn][maxn][maxn], M, N;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 每列最多放置两个炮,f[i][j][k]表示前i行中，j列放置一个炮，k列放置两个炮的方案数</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> num)</span> </span>{ <span class="keyword">return</span> (num * (num - <span class="number">1</span>) / <span class="number">2</span>) % mod; }</span><br><span class="line"><span class="function">signed <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%lld %lld"</span>, &N, &M);</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j <= m; j++) {< span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k + j <= m; k++) {< span><br><span class="line">                <span class="comment">//一个不放</span></span><br><span class="line">                f[i][j][k] = f[i - <span class="number">1</span>][j][k];</span><br><span class="line">                <span class="comment">//放一个在没有棋子的列</span></span><br><span class="line">                <span class="keyword">if</span> (j >= <span class="number">1</span>)</span><br><span class="line">                    f[i][j][k] = (f[i][j][k] + (M - j - k + <span class="number">1</span>) * f[i - <span class="number">1</span>][j - <span class="number">1</span>][k]) % mod;</span><br><span class="line">                <span class="comment">//放一个在有一个棋子的列</span></span><br><span class="line">                <span class="keyword">if</span> (k >= <span class="number">1</span>)</span><br><span class="line">                    f[i][j][k] = (f[i][j][k] + (j + <span class="number">1</span>) * f[i - <span class="number">1</span>][j + <span class="number">1</span>][k - <span class="number">1</span>]) % mod;</span><br><span class="line">                <span class="comment">//放两个棋子，都放在没有放置棋子的列</span></span><br><span class="line">                <span class="keyword">if</span> (j >= <span class="number">2</span>)</span><br><span class="line">                    f[i][j][k] = (f[i][j][k] + f[i - <span class="number">1</span>][j - <span class="number">2</span>][k] * C(M - j - k + <span class="number">2</span>)) % mod;</span><br><span class="line">                <span class="comment">//放两个棋子，一个</span></span><br><span class="line">                <span class="keyword">if</span> (k >= <span class="number">1</span>)</span><br><span class="line">                    f[i][j][k] = (f[i][j][k] + f[i - <span class="number">1</span>][j][k - <span class="number">1</span>] * (j) * (M - j + <span class="number">1</span> - k)) % mod;</span><br><span class="line">                <span class="comment">//放置两个棋子，两列均有各有一个棋子</span></span><br><span class="line">                <span class="keyword">if</span> (k >= <span class="number">2</span>)</span><br><span class="line">                    f[i][j][k] = (f[i][j][k] + f[i - <span class="number">1</span>][j + <span class="number">2</span>][k - <span class="number">2</span>] * C(j + <span class="number">2</span>)) % mod;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i <= m; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j <= m; j++) {< span><br><span class="line">            ans = (ans + f[N][i][j]) % mod;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P2405-non天平"><a href="#P2405-non天平" class="headerlink" title="P2405 non天平"></a><a href="https://www.luogu.org/problemnew/show/P2405" target="_blank" rel="noopener">P2405 non天平</a></h3><p>R:思维题，本质是进制转换后进行数位dp,使用了JAVA高精度（我不会写高精）</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 这道题是数位dp,f[i+1][1]表示将第i+1位凑成10，那么</span></span><br><span class="line"><span class="comment"> * f[i][0/1]额外对这个1进行处理，f[i+1][0] 表示不凑成10</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">P2405</span> </span>{</span><br><span class="line">    <span class="comment">//初始化为0</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] mod = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100005</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> tot;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] f = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100005</span>][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> a > b ? b : a;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line"></span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        BigInteger num = <span class="keyword">new</span> BigInteger(scanner.next());</span><br><span class="line">        BigInteger divided = <span class="keyword">new</span> BigInteger(scanner.next());</span><br><span class="line">        BigInteger zero = <span class="keyword">new</span> BigInteger(<span class="string">"0"</span>);</span><br><span class="line">        BigInteger one = <span class="keyword">new</span> BigInteger(<span class="string">"1"</span>);</span><br><span class="line">        <span class="keyword">int</span> n = divided.intValue();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (divided.equals(one)) {</span><br><span class="line">            System.out.println(num);</span><br><span class="line">            scanner.close();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!num.equals(zero)) {</span><br><span class="line">            mod[++tot] = num.mod(divided).intValue();</span><br><span class="line">            num = num.divide(divided);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        f[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= tot; i++) {< span><br><span class="line">            f[i][<span class="number">0</span>] = min(f[i - <span class="number">1</span>][<span class="number">0</span>] + mod[i], f[i - <span class="number">1</span>][<span class="number">1</span>] + mod[i] + <span class="number">1</span>);</span><br><span class="line">            f[i][<span class="number">1</span>] = min(f[i - <span class="number">1</span>][<span class="number">0</span>] + n - mod[i], f[i - <span class="number">1</span>][<span class="number">1</span>] + n - mod[i] - <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        scanner.close();</span><br><span class="line">        System.out.println(min(f[tot][<span class="number">0</span>], f[tot][<span class="number">1</span>] + <span class="number">1</span>));</span><br><span class="line">    }</span><br><span class="line">}</span><br></=></span></pre></td></tr></tbody></table></figure><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/区间dp/" rel="tag"># 区间dp</a>
+          
+            <a href="/tags/单调队列/" rel="tag"># 单调队列</a>
+          
+            <a href="/tags/重要/" rel="tag"># 重要</a>
+          
+            <a href="/tags/省选/" rel="tag"># 省选</a>
+          
+            <a href="/tags/数位dp/" rel="tag"># 数位dp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/Algorithm0527/" rel="next" title="Konjak Record——2019.05.27">
+                <i class="fa fa-chevron-left"></i> Konjak Record——2019.05.27
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="Oduesp">
+            
+              <p class="site-author-name" itemprop="name">Oduesp</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sunyunzeng.github.io/" title="sunyunzeng" target="_blank">sunyunzeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mzzzzzzzp.github.io/" title="mzzzzzzzp" target="_blank">mzzzzzzzp</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#P3558-POI2013-BAJ-Bytecomputer"><span class="nav-number">1.</span> <span class="nav-text">P3558 [POI2013]BAJ-Bytecomputer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2300-合并神犇"><span class="nav-number">2.</span> <span class="nav-text">P2300 合并神犇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4302-SCOI2003-字符串折叠"><span class="nav-number">3.</span> <span class="nav-text">P4302 [SCOI2003]字符串折叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4158-SCOI2009-粉刷匠"><span class="nav-number">4.</span> <span class="nav-text">P4158 [SCOI2009]粉刷匠</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#难题"><span class="nav-number"></span> <span class="nav-text">难题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P2757-国家集训队-等差子序列"><span class="nav-number">1.</span> <span class="nav-text">P2757 [国家集训队]等差子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P3413-SAC-1-萌数"><span class="nav-number">2.</span> <span class="nav-text">P3413 SAC#1 - 萌数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2051-AHOI2009-中国象棋"><span class="nav-number">3.</span> <span class="nav-text">P2051 [AHOI2009]中国象棋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2405-non天平"><span class="nav-number">4.</span> <span class="nav-text">P2405 non天平</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oduesp</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'nlj1JLvl3nzo1vU8n7HHrrng-gzGzoHsz',
+        appKey: 'MTYTWoVCfpfyUglV6Ccx7953',
+        placeholder: '写下你的评论...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

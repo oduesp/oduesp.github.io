@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="动态规划,状压dp,贪心,树形dp,补集,分组dp,思维,多重背包,完全背包,01背包,逆序对,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="P2744 [USACO5.3]量取牛奶Milk MeasuringR:使用dfs枚举桶，dp完全背包判断合理性 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include #define ri register int">
+<meta name="keywords" content="动态规划,状压dp,贪心,树形dp,补集,分组dp,思维,多重背包,完全背包,01背包,逆序对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Konjak Record——2019.05.27">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/Algorithm0527/index.html">
+<meta property="og:site_name" content="Oduesp">
+<meta property="og:description" content="P2744 [USACO5.3]量取牛奶Milk MeasuringR:使用dfs枚举桶，dp完全背包判断合理性 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include #define ri register int">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-27T11:20:54.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Konjak Record——2019.05.27">
+<meta name="twitter:description" content="P2744 [USACO5.3]量取牛奶Milk MeasuringR:使用dfs枚举桶，dp完全背包判断合理性 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include #define ri register int">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/27/Algorithm0527/">
+
+
+
+
+
+  <title>Konjak Record——2019.05.27 | Oduesp</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/oduesp" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oduesp</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/Algorithm0527/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oduesp">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oduesp">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Konjak Record——2019.05.27</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T18:46:17+08:00">
+                2019-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Konjak-Records/" itemprop="url" rel="index">
+                    <span itemprop="name">Konjak Records</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/27/Algorithm0527/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/27/Algorithm0527/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="P2744-USACO5-3-量取牛奶Milk-Measuring"><a href="#P2744-USACO5-3-量取牛奶Milk-Measuring" class="headerlink" title="P2744 [USACO5.3]量取牛奶Milk Measuring"></a><a href="https://www.luogu.org/problemnew/show/P2744" target="_blank" rel="noopener">P2744 [USACO5.3]量取牛奶Milk Measuring</a></h3><p>R:使用dfs枚举桶，dp完全背包判断合理性</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line">#define ri register int</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 迭代加深搜索id-dfs,从少到多枚举水桶数量、从小到大枚举水桶容积，第一次遇到的解一定是最优解</span></span><br><span class="line"><span class="comment"> * 判断合理性用完全背包</span></span><br><span class="line"><span class="comment"> * 编码难度不高，思路也很好想，但是这个复杂度上限非常高，所以我没想到这样也能AC</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">int</span> Q, P, V[<span class="number">105</span>], cache[<span class="number">105</span>], visited[<span class="number">105</span>], depth, flag, f[<span class="number">20005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    memset(f, <span class="number">0</span>, sizeof(f));</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (ri i = <span class="number">1</span>; i <= depth; i++) {< span><br><span class="line">        <span class="keyword">for</span> (ri j = cache[i]; j <= q; j++) {< span><br><span class="line">            <span class="keyword">if</span> (f[j - cache[i]]) {</span><br><span class="line">                f[j] = <span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> f[Q];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> d, <span class="keyword">int</span> tot)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span> (d == depth) {</span><br><span class="line">        <span class="keyword">if</span> (check()) {</span><br><span class="line">            printf(<span class="string">"%d "</span>, depth);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= depth; i++) {< span><br><span class="line">                printf(<span class="string">"%d "</span>, cache[i]);</span><br><span class="line">            }</span><br><span class="line">            flag = <span class="keyword">true</span>;</span><br><span class="line">            printf(<span class="string">"\n"</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = tot; i <= p; i++) {< span><br><span class="line">        <span class="keyword">if</span> (!visited[i] && !flag) {</span><br><span class="line">            visited[i] = <span class="keyword">true</span>;</span><br><span class="line">            cache[d + <span class="number">1</span>] = V[i];</span><br><span class="line">            dfs(d + <span class="number">1</span>, i + <span class="number">1</span>);</span><br><span class="line">            visited[i] = <span class="keyword">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &Q, &P);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= p; i++)< span><br><span class="line">        scanf(<span class="string">"%d"</span>, &V[i]);</span><br><span class="line">    std::sort(V + <span class="number">1</span>, V + <span class="number">1</span> + P);</span><br><span class="line">    P = std::unique(V + <span class="number">1</span>, V + <span class="number">1</span> + P) - V - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= p; i++) {< span><br><span class="line">        depth = i;</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        dfs(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P2513-HAOI2009-逆序对数列"><a href="#P2513-HAOI2009-逆序对数列" class="headerlink" title="P2513 [HAOI2009]逆序对数列"></a><a href="https://www.luogu.org/problemnew/show/P2513" target="_blank" rel="noopener">P2513 [HAOI2009]逆序对数列</a></h3><p>R:经典题,复杂度O(NK)</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 经典题</span></span><br><span class="line"><span class="comment"> * f[i][j]表示1-i组成的有j对逆序对的方案数，那么添加一个数字i+1,根据插入位置不同</span></span><br><span class="line"><span class="comment"> * 可以添加0-i个逆序对，用前缀和保存一下即可。</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">int</span> N, K, f[<span class="number">1005</span>][<span class="number">1005</span>], sum[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    cin >> N >> K;</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i <= k; i++)< span><br><span class="line">        sum[<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j <= k; j++) {< span><br><span class="line">            f[i][j] = (sum[i - <span class="number">1</span>][j] - (j >= i ? sum[i - <span class="number">1</span>][j - i] : <span class="number">0</span>) + mod) % mod;</span><br><span class="line">        }</span><br><span class="line">        sum[i][<span class="number">0</span>] = f[i][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= k; j++) {< span><br><span class="line">            sum[i][j] = (sum[i][j - <span class="number">1</span>] + f[i][j]) % mod;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    cout << f[N][K] << endl;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P4141-消失之物"><a href="#P4141-消失之物" class="headerlink" title="P4141 消失之物"></a><a href="https://www.luogu.org/problemnew/show/P4141" target="_blank" rel="noopener">P4141 消失之物</a></h3><p>R:第一种方法是跑N次01背包，复杂度为N<em>N</em>K，难以承受，第二种方法是使用补集的方法，复杂度NK,可以和P1450对比，两题都使用了补集</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string"><bits stdc++.h></bits></span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 补集优化：</span></span><br><span class="line"><span class="comment"> * 可以跟P1450对比，都用了补集的思想</span></span><br><span class="line"><span class="comment"> * g[j]表示不做任何限制，构成j的方案数</span></span><br><span class="line"><span class="comment"> * ans = g[j] - 选i构成j</span></span><br><span class="line"><span class="comment"> * (首先选i构成j) ！=g[j-w[i]],因为g[j-w[i]]中的方案数可能包含选了i</span></span><br><span class="line"><span class="comment"> * 选i构成J == 不选i构成i-w[i]，f[i-w[i]]</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">int</span> N, M, f[maxn], v[maxn], g[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &N, &M);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)< span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &v[i]);</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = M; j >= v[i]; j--) {</span><br><span class="line">            f[j] = (f[j] + f[j - v[i]]) % <span class="number">10</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">memcpy</span>(g, f, <span class="keyword">sizeof</span>(f));</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            <span class="keyword">if</span> (j < v[i]) {</span><br><span class="line">                f[j] = g[j];</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                f[j] = (g[j] - f[j - v[i]] + <span class="number">10</span>) % <span class="number">10</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>, f[j]);</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    }</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P1373-小a和uim之大逃离"><a href="#P1373-小a和uim之大逃离" class="headerlink" title="P1373 小a和uim之大逃离"></a><a href="https://www.luogu.org/problemnew/show/P1373" target="_blank" rel="noopener">P1373 小a和uim之大逃离</a></h3><p>R:由于只能向下向右走，所以按照此顺序枚举位置和差值</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">805</span>, mod = <span class="number">1000000007</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * f[i][j][k][0]表示在i,j点，轮到小a取，a-uim分数的差值为k的方案数</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">int</span> N, M, K, chess[maxn][maxn], f[maxn][maxn][<span class="number">20</span>][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%d %d %d"</span>, &N, &M, &K);</span><br><span class="line">    ++K;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            scanf(<span class="string">"%d"</span>, &chess[i][j]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            f[i][j][chess[i][j] % K][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k < K; k++) {</span><br><span class="line">                f[i][j][k][<span class="number">0</span>] = (f[i][j][k][<span class="number">0</span>] + f[i - <span class="number">1</span>][j][(k - chess[i][j] + K) % K][<span class="number">1</span>]) % mod;</span><br><span class="line">                f[i][j][k][<span class="number">0</span>] = (f[i][j][k][<span class="number">0</span>] + f[i][j - <span class="number">1</span>][(k - chess[i][j] + K) % K][<span class="number">1</span>]) % mod;</span><br><span class="line">                f[i][j][k][<span class="number">1</span>] = (f[i][j][k][<span class="number">1</span>] + f[i - <span class="number">1</span>][j][(k + chess[i][j]) % K][<span class="number">0</span>]) % mod;</span><br><span class="line">                f[i][j][k][<span class="number">1</span>] = (f[i][j][k][<span class="number">1</span>] + f[i][j - <span class="number">1</span>][(k + chess[i][j]) % K][<span class="number">0</span>]) % mod;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++) {< span><br><span class="line">            ans = (ans + f[i][j][<span class="number">0</span>][<span class="number">1</span>]) % mod;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P3052-USACO12MAR-摩天大楼里的奶牛Cows-in-a-Skyscraper"><a href="#P3052-USACO12MAR-摩天大楼里的奶牛Cows-in-a-Skyscraper" class="headerlink" title="P3052 [USACO12MAR]摩天大楼里的奶牛Cows in a Skyscraper"></a><a href="https://www.luogu.org/problemnew/show/P3052" target="_blank" rel="noopener">P3052 [USACO12MAR]摩天大楼里的奶牛Cows in a Skyscraper</a></h3><p>R:看数据范围，考虑状压dp,f[i]表示状态为i是最小分组数,g[i]表示状态为i时剩余的最大空间(所有分组的电梯)</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line">#define isset(a, b) (a&(1 << (b - 1))) != 0</span><br><span class="line">#define prev(a, b) a - (1 << (b - 1))</span><br><span class="line">#define max(a, b) a > b ? a : b</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 首先看N<=18，所以应该是状压dp< span></=18，所以应该是状压dp<></span><br><span class="line"><span class="comment"> * f[i]表示状态为i是最小分组数,g[i]表示状态为i时剩余的最大空间(所有分组的电梯)</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">10</span> + (<span class="number">1</span> << <span class="number">18</span>);</span><br><span class="line"><span class="keyword">int</span> V[<span class="number">19</span>], f[maxn], g[maxn], N, up, W;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &N, &W);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)< span><br><span class="line">        scanf(<span class="string">"%d"</span>, &V[i]);</span><br><span class="line">    up = (<span class="number">1</span> << N) - <span class="number">1</span>;</span><br><span class="line">    memset(f, <span class="number">0x3f</span>, sizeof(f));</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>, g[<span class="number">0</span>] = W;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= up; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= n; j++) {< span><br><span class="line">            <span class="keyword">if</span> (!isset(i, j))</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> pre = prev(i, j);</span><br><span class="line">            <span class="keyword">if</span> (g[pre] >= V[j] && f[pre] <= f[i]) {< span><br><span class="line">                f[i] = f[pre];</span><br><span class="line">                g[i] = max(g[pre] - V[j], g[i]);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (g[pre] < V[j] && f[pre] + <span class="number">1</span> <= f[i]) {< span><br><span class="line">                f[i] = f[pre] + <span class="number">1</span>;</span><br><span class="line">                g[i] = max(g[i], W - V[j]);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, f[up]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></=></span></span></pre></td></tr></tbody></table></figure>
+<h3 id="P4933-大师"><a href="#P4933-大师" class="headerlink" title="P4933 大师"></a><a href="https://www.luogu.org/problemnew/show/P4933" target="_blank" rel="noopener">P4933 大师</a></h3><p>R：思维题，和打老鼠以及power收集那题类似</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * f[i][j]表示以i结尾，公差为j的等差数列个数，这个题和打老鼠那个题类似</span></span><br><span class="line"><span class="comment"> * 都是O(N^2)复杂度</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span>, p = <span class="number">20000</span>;</span><br><span class="line"><span class="keyword">int</span> N, h[<span class="number">1005</span>], f[<span class="number">1005</span>][<span class="number">40005</span>], ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%d"</span>, &N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        scanf(<span class="string">"%d"</span>, &h[i]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j < i; j++) {</span><br><span class="line">            <span class="keyword">int</span> delta = h[i] - h[j] + p;</span><br><span class="line">            f[i][delta] = (f[j][delta] + f[i][delta] + <span class="number">1</span>) % mod;</span><br><span class="line">            ans = (ans + f[j][delta] + <span class="number">1</span>) % mod;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    ans = (ans + N) % mod;</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P1987-摇钱树"><a href="#P1987-摇钱树" class="headerlink" title="P1987 摇钱树"></a><a href="https://www.luogu.org/problemnew/show/P1987" target="_blank" rel="noopener">P1987 摇钱树</a></h3><p>R:贪心+dp，先按照掉落速度从大到小排序，然后进行01背包</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 贪心+dp，先按照消耗排序，再进行01背包跑一遍即可。</span></span><br><span class="line"><span class="comment"> * 注意每次将ans置0</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line">struct Node {</span><br><span class="line">    <span class="keyword">int</span> money, cost;</span><br><span class="line">};</span><br><span class="line">Node nodes[maxn];</span><br><span class="line"><span class="keyword">int</span> N, K, f[maxn], ans;</span><br><span class="line"><span class="function">inline bool <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Node& a, <span class="keyword">const</span> Node& b)</span> </span>{ <span class="keyword">return</span> a.cost > b.cost; }</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">while</span> (cin >> N >> K) {</span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (N == <span class="number">0</span> && K == <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">            cin >> nodes[i].money;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)< span><br><span class="line">            cin >> nodes[i].cost;</span><br><span class="line">        sort(nodes + <span class="number">1</span>, nodes + <span class="number">1</span> + N, cmp);</span><br><span class="line">        memset(f, ~<span class="number">0x3f</span>, sizeof(f)), f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = K; j >= <span class="number">1</span>; j--) {</span><br><span class="line">                <span class="comment">//注意这里的时间消耗是j-1而不是i-1</span></span><br><span class="line">                f[j] = max(f[j], f[j - <span class="number">1</span>] + max(<span class="number">0</span>, nodes[i].money - nodes[i].cost * (j - <span class="number">1</span>)));</span><br><span class="line">                ans = max(ans, f[j]);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        cout << ans << endl;</span><br><span class="line">    }</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h2 id="常规题"><a href="#常规题" class="headerlink" title="常规题"></a>常规题</h2><h3 id="P2018-消息传递"><a href="#P2018-消息传递" class="headerlink" title="P2018 消息传递"></a><a href="https://www.luogu.org/problemnew/show/P2018" target="_blank" rel="noopener">P2018 消息传递</a></h3><p>R:树形dp</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 树型dp，难度中等</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">int</span> N, tot, f[maxn], cache[maxn], ans = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">std::vector<<span class="keyword">int</span>> record[maxn];</span><br><span class="line">struct Node {</span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line">    Node* next;</span><br><span class="line">};</span><br><span class="line">Node *h[maxn], pool[maxn << <span class="number">1</span>];</span><br><span class="line"><span class="function">inline <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    Node* p = &pool[tot++];</span><br><span class="line">    p->v = v, p->next = h[u], h[u] = p;</span><br><span class="line">}</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a > b ? a : b; }</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a > b ? b : a; }</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">for</span> (Node* p = h[root]; p; p = p->next) {</span><br><span class="line">        <span class="keyword">if</span> (fa == p->v) {</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line">        dfs(p->v, root);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, mx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (Node* p = h[root]; p; p = p->next) {</span><br><span class="line">        <span class="keyword">if</span> (fa == p->v)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        cache[++n] = f[p->v];</span><br><span class="line">    }</span><br><span class="line">    std::sort(cache + <span class="number">1</span>, cache + <span class="number">1</span> + n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        mx = max(mx, cache[i] + n + <span class="number">1</span> - i);</span><br><span class="line">    }</span><br><span class="line">    f[root] = mx;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    scanf(<span class="string">"%d"</span>, &N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= n; i++) {< span><br><span class="line">        <span class="keyword">int</span> u;</span><br><span class="line">        scanf(<span class="string">"%d"</span>, &u);</span><br><span class="line">        add_edge(u, i), add_edge(i, u);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        memset(f, <span class="number">0</span>, sizeof(f));</span><br><span class="line">        dfs(i, <span class="number">0</span>);</span><br><span class="line">        record[f[i]].push_back(i);</span><br><span class="line">        ans = min(ans, f[i]);</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, ans + <span class="number">1</span>);</span><br><span class="line">    std::sort(record[ans].begin(), record[ans].end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < record[ans].size(); i++) {</span><br><span class="line">        printf(<span class="string">"%d "</span>, record[ans][i]);</span><br><span class="line">    }</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></pre></td></tr></tbody></table></figure>
+<h3 id="P1782-旅行商的背包"><a href="#P1782-旅行商的背包" class="headerlink" title="P1782 旅行商的背包"></a><a href="https://www.luogu.org/problemnew/show/P1782" target="_blank" rel="noopener">P1782 旅行商的背包</a></h3><p>R:多重背包+完全背包，这道题卡常，如果不会写单调队列优化多重背包，可能会超时。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include <bits stdc++.h></bits></span><br><span class="line">#define ri register int</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 多重背包二进制优化+完全背包</span></span><br><span class="line"><span class="comment"> * **/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">10000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> N, M, C, V[maxn], W[maxn], D[maxn], f[maxn];</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ <span class="keyword">return</span> a > b ? a : b; }</span><br><span class="line"><span class="function">inline <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> f = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!isdigit(c)) {</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">'-'</span>)</span><br><span class="line">            f = -<span class="number">1</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span> (isdigit(c)) {</span><br><span class="line">        r = <span class="number">10</span> * r + c - <span class="string">'0'</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> f * r;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    N = read(), M = read(), C = read();</span><br><span class="line">    <span class="keyword">for</span> (ri i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        V[i] = read(), W[i] = read(), D[i] = read();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (ri i = <span class="number">1</span>; i <= n; i++) {< span><br><span class="line">        ri k = <span class="number">1</span>, amount = D[i];</span><br><span class="line">        <span class="keyword">if</span> (amount * V[i] >= C) {</span><br><span class="line">            <span class="keyword">for</span> (ri j = V[i]; j <= c; j++) {< span><br><span class="line">                f[j] = max(f[j], f[j - V[i]] + W[i]);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span> (k <= amount) {< span><br><span class="line">            <span class="keyword">for</span> (ri j = C; j >= k * V[i]; j--) {</span><br><span class="line">                f[j] = max(f[j], f[j - k * V[i]] + k * W[i]);</span><br><span class="line">            }</span><br><span class="line">            amount -= k;</span><br><span class="line">            k *= <span class="number">2</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span> (ri j = C; j >= amount * V[i]; j--) {</span><br><span class="line">            f[j] = max(f[j], f[j - amount * V[i]] + amount * W[i]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (ri i = <span class="number">1</span>; i <= m; i++) {< span><br><span class="line">        <span class="keyword">int</span> a = read(), b = read(), c = read();</span><br><span class="line">        <span class="keyword">for</span> (ri j = C; j; j--) {</span><br><span class="line">            <span class="keyword">for</span> (ri k = <span class="number">0</span>; k <= j; k++) {< span><br><span class="line">                f[j] = max(f[j], f[j - k] + (a * k + b) * k + c);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    printf(<span class="string">"%d\n"</span>, f[C]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></=></span></=></span></=></span></=></span></=></span></=></span></pre></td></tr></tbody></table></figure><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/状压dp/" rel="tag"># 状压dp</a>
+          
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/树形dp/" rel="tag"># 树形dp</a>
+          
+            <a href="/tags/补集/" rel="tag"># 补集</a>
+          
+            <a href="/tags/分组dp/" rel="tag"># 分组dp</a>
+          
+            <a href="/tags/思维/" rel="tag"># 思维</a>
+          
+            <a href="/tags/多重背包/" rel="tag"># 多重背包</a>
+          
+            <a href="/tags/完全背包/" rel="tag"># 完全背包</a>
+          
+            <a href="/tags/01背包/" rel="tag"># 01背包</a>
+          
+            <a href="/tags/逆序对/" rel="tag"># 逆序对</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/Algorithm0524/" rel="next" title="Konjak Record——2019.05.24">
+                <i class="fa fa-chevron-left"></i> Konjak Record——2019.05.24
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/29/Algorithm0529/" rel="prev" title="Konjak Record——2019.05.29">
+                Konjak Record——2019.05.29 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="Oduesp">
+            
+              <p class="site-author-name" itemprop="name">Oduesp</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sunyunzeng.github.io/" title="sunyunzeng" target="_blank">sunyunzeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mzzzzzzzp.github.io/" title="mzzzzzzzp" target="_blank">mzzzzzzzp</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#P2744-USACO5-3-量取牛奶Milk-Measuring"><span class="nav-number">1.</span> <span class="nav-text">P2744 [USACO5.3]量取牛奶Milk Measuring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2513-HAOI2009-逆序对数列"><span class="nav-number">2.</span> <span class="nav-text">P2513 [HAOI2009]逆序对数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4141-消失之物"><span class="nav-number">3.</span> <span class="nav-text">P4141 消失之物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P1373-小a和uim之大逃离"><span class="nav-number">4.</span> <span class="nav-text">P1373 小a和uim之大逃离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P3052-USACO12MAR-摩天大楼里的奶牛Cows-in-a-Skyscraper"><span class="nav-number">5.</span> <span class="nav-text">P3052 [USACO12MAR]摩天大楼里的奶牛Cows in a Skyscraper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4933-大师"><span class="nav-number">6.</span> <span class="nav-text">P4933 大师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P1987-摇钱树"><span class="nav-number">7.</span> <span class="nav-text">P1987 摇钱树</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#常规题"><span class="nav-number"></span> <span class="nav-text">常规题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P2018-消息传递"><span class="nav-number">1.</span> <span class="nav-text">P2018 消息传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P1782-旅行商的背包"><span class="nav-number">2.</span> <span class="nav-text">P1782 旅行商的背包</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oduesp</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'nlj1JLvl3nzo1vU8n7HHrrng-gzGzoHsz',
+        appKey: 'MTYTWoVCfpfyUglV6Ccx7953',
+        placeholder: '写下你的评论...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
